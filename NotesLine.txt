@@ -3,26 +3,23 @@ Goal:
 - Define an entry. Define a SL. Define TP levels. Do for all top 25 cryptos. Get ~5000 rows of data with statistics: returns, distance from MA's, atr, volume, number of taps on line, etc. Try to see if we can fit some pattern in positive returns with the data. Backtest to optimize SL/TP/etc.
 
 To-do:
-- Do same for horizontal support lines.
+- Define SL, TP levels during trade.
+- Make horizontal support lines.
+- Do all cleanup before modifying core code function.
 
 Tweaks:
 
-- Exhaust the touchpoints (don't just identify the 2nd/3rd, try to identify them all, and then base trade on #3 or #4.)
+- Add/include statistics from before/during trade (during line and after line): (volume, distance from MA, ATR etc.)
 
-- Have column for 'Total Number of Touch Points'
+- ATR for whatever current candle instead of origin candle?
 
-- Add statistics before/during trade (during line, and after line): (volume, distance from MA, etc.)
+- start/end/touchpoints/ranges/limits: Rather than close, do mean(high,close), or weighted_mean(0.75*close + 0.25*high), or something like (HLC/3).
+- (For bottom_limit would be focusing on the 'low' rather than 'high' since it's looking for target below the resistance line.)
 
-- Variable number of candles as 'rest period' rather than just 10.
+- Remove the condition for the line ending if price goes far enough below the line? (5*ATR)
+- Problem with this is, code is setup so there is no overlap, so if all time high line just continues forever, then it may not draw other lines.
 
-- Include wicks (high/low) in some capacity (50% of their length, some % weight, include in touch points, include in bounds and limits).
+- Identify all touchpoints, not just up to 3. Base trade of #3 or #4. (Have column for 'Total Number of Touch Points'). Requires re-working 'find_third_touch' function.
 
-- next_candle's ATR instead of current_candle's ATR.
+- Generally polish code see if functions can be split up to be more readable, comment better, etc.
 
-
-
-- first green candle/point: Measure y-intercept between the high and the close instead of just the close, maybe a weighted avg (0.75*close + 0.25*high), or something like (HLC/3)
-
-- Minimum volatility for line to exist, (minimum bounce away from the line after a touchpoint?) Ehhh
-
-- Line exists until it breaks, rather than currently ending if we hit 5*ATR?
