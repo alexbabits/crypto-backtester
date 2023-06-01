@@ -9,13 +9,10 @@ To-do:
 
 Tweaks:
 
-- Add/include statistics from before/during trade (during line and after line): (volume, distance from MA, ATR etc.)
-
 - start/end/touchpoints/ranges/limits: Rather than close, do mean(high,close), or weighted_mean(0.75*close + 0.25*high), or something like (HLC/3).
 - (For bottom_limit would be focusing on the 'low' rather than 'high' since it's looking for target below the resistance line.)
 
-- Remove the condition for the line ending if price goes far enough below the line? (5*ATR)
-- Problem with this is, code is setup so there is no overlap, so if all time high line just continues forever, then it may not draw other lines.
+- Maybe remove the condition for the line termination if price goes far enough below the line? (5*ATR). A potential problem with this is, code is setup so there is no overlap, so if all time high line just continues for a long time, then it may not draw other lines.
 
 - Identify all touchpoints, not just up to 3. Base trade of #3 or #4. (Have column for 'Total Number of Touch Points'). Requires re-working 'find_third_touch' function.
 
