@@ -11,8 +11,6 @@ Tweaks:
 
 - Add/include statistics from before/during trade (during line and after line): (volume, distance from MA, ATR etc.)
 
-- ATR for whatever current candle instead of origin candle?
-
 - start/end/touchpoints/ranges/limits: Rather than close, do mean(high,close), or weighted_mean(0.75*close + 0.25*high), or something like (HLC/3).
 - (For bottom_limit would be focusing on the 'low' rather than 'high' since it's looking for target below the resistance line.)
 
