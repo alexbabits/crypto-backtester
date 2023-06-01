@@ -1,98 +1,21 @@
 - Use HLC/3 average rather than just 'close'?
-- Trade how a coder sees.
 
-Coding Thoughts/Process:
+Coding Thoughts/Process (Code how a trader sees):
 
-0. Goal: Identify horizontal support/resistance lines with live rolling data, make strategy based on returns info collected. We do this by collecting data from the line and then its breakout, for say top 25 cryptos. Get ~5000 datapoints with returns afterwards. Then we can add some data info regarding every data point (distance vs ma200, atr/channel, returns, etc.) and try to see if we can fit some pattern in positive returns with the data. When we say 'line' we are technically referring to a 'ray' starting from the initial candle of interest pointing to the right.
+Goal: 
+- Identify horizontal support/resistance lines.
+- Make simple strategy based on returns after line break. Define an entry. Define a stop loss. Define take profit levels. Do for all top 25 cryptos. Get ~5000 rows of data with statistics: returns, distance from MA's, atr, volume, number of taps on line, etc.
+- Try to see if we can fit some pattern in positive returns with the data, then we run backtest for optimization.
 
+To-do:
+- Gather returns and price data from the lines. Returns after break. price action during line. We can add statistics to that later (volume, distance from MA)
+- Do same for horizontal support lines.
 
-2. Details: 
-- May need variable number of candles as 'rest period' instead of just 10.
-- For simplicity we may start by completely ignoring wicks (highs/lows) and focus only on open and close data. Later we could weigh wicks some % less than solid open/close prices, (idea would be to dampen or ignore wicks/outliers).
-- Extra: Whole line must span at least 40 candles by the 3rd touchpoint to be validated.
-- Want to make sure we are 'rolling' through the data as if we were a live trader, so we don't have access to future prices while going through our dataframe. Roll through data just like a day would pass, so (i) is “live” and (:i) is what we can use? If we go through historical data simulating "live" by rolling through df, we can capture info without lookahead bias. 
-- We are looking to get a snapshot of the price action during the entire line itself, and then the price action and returns after the line is broken. Either a set amount of candles after it breaks of like 100, or some % of candles compared to the line length. We can add statistics to that later (volume in breakout, distance from MA, etc.)
+Tweaks:
+- Variable number of candles as 'rest period' instead of just 10.
+- Include wicks (high/low/open/close) in some capacity (50% of their length, some % weight, include in touch points, include in bounds and limits).
+- Minimum line length, could just filter dataframe aftwards too. Ex: 40 candle minimum.
+- next_candle's ATR instead of current_candle's ATR.
+- After drawing line, find a clever way to count how many 'touch points' there were. Good for trading analysis?
+- first green candle/point: Measure y-intercept between the high and the close instead of just the close, maybe a weighted avg (0.75*close + 0.25*high)
 
-Example Strategy: So we see 1,2 and maybe 3 touches on a line, now whenever price touches low, we enter in this trade. Use SL and TP levels. Then we run backtest for optimization.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Identifying Horizontal Resistance Lines:  
-
-We will be examining every green (close > open) candles close in our df one by one. Resistance lines (when ignoring wicks for now) always start at that kind of point as their first point. (Almost always true, sometimes scuffed data on lower timeframes will have the next candles open not alligned with previous candles close).
-
-From originally examined candle's close, do any of the next 10 candles 'close' or 'open' values exceed the original candle's 'close' by too much (over 50%*ATR, where ATR is corresponding to the current candle being looked at)? If so, then the potential for a horizontal resistance line is invalidated, and we move onto the next candle in the database.
-
-Example numbers: original candle close is 1800. ATR for current candle being looked at is 20, so 50%*ATR is 10. Limit/threshold would be 1810.
-
-If none of those 10 candles exceed the limit of 1810, then continue from right after those 10 candles and search for a 'touch' or 'point' for this line, which is anytime a candle's 'open' or 'close' comes within (50%*ATR) of the original candles close of 1800. But also, if any of these candles 'open' or 'close' exceed the threshold of 1800+(50%*ATR), then the potential for a horizontal resistance line is invalidated. If the line is not invalidated, and any candle after those 10 candles comes 'within distance' and count as a touch point for the line, then we have a valid line with two points where the y-intercept is the original candles close, the line being on the x-axis of our original candle, and the slope is zero. 
-
-Finally now that we have a line, continue the search onward until the line is invalidated at (1800+50%*ATR), or the 'open' or 'close' price of a candle reaches 500%*ATR below the original candles close of 1800, where the ATR this time is based on the original candles close.
-
-Example numbers: original candles close is 1800. original candles ATR was 15. If the 'open' or 'close' of any future candle becomes less than 1725 (1800-(500%*15)), then the line stops there. Even though the line may only have a few touch points, we still want an indexing of how long the line is, we know every value in this case would be 1800 and the slope is zero.
-
-Footnotes: Technically we are interested in non-infinite length horizontal resistance 'rays' or line segments here rather than infinite length lines, because the line segment will start at the original candles close, and point to the right until it ends based on our logic.
-
-
-
-
-1. Iterate over each row in the DataFrame.
-2. For each row, check the following 10 candles to see if any candle's close or open exceeds the current close by more than 50% of the ATR.
-3. If none of the following 10 candles exceed the limit, start a new loop starting from the 11th candle. If a candle's open or close comes within 50% of the ATR of the current close and doesn't exceed the limit, record this as a touch point.
-4. Continue the loop until the price reaches 500% of the ATR below the current close or exceeds the limit.
-
-
-
-
-
-
-
-next_candle use that ATR instead of current_candle (current candle is original?).
-(Think I need to move up the next_candle defintion right below where I create next_candles, if i want to do this)
-
-
-
-if 1800 - 10 <= next candles open/close
-if 1790 <= next candles close
-
-if current_candle['close'] - (0.5 * current_candle['atr']) <= next_candle[['open', 'close']].min():
-if current_candle['close'] + (0.5 * current_candle['atr']) <= next_candle[['open', 'close']].max():
-
-instead of:
-
-if abs(current_candle['close'] - next_candle[['open', 'close']].min()) <= 0.5 * current_candle['atr']:
-
-
-
-You only need two poitns to draw a line, afterwards, you can analyze the line data and see how many touch points there were!
-
-And then do same for support line.
