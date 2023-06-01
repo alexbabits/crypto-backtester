@@ -1,4 +1,4 @@
-- Use HLC/3 average rather than just 'close'?
+- Use HLC/3 average for things.
 
 Coding Thoughts/Process (Code how a trader sees):
 
@@ -18,4 +18,12 @@ Tweaks:
 - next_candle's ATR instead of current_candle's ATR.
 - After drawing line, find a clever way to count how many 'touch points' there were. Good for trading analysis?
 - first green candle/point: Measure y-intercept between the high and the close instead of just the close, maybe a weighted avg (0.75*close + 0.25*high)
+- Minimum volatility for line to exist
 
+So now that we have proper lines, we want to do some analysis with them. If possible, I'd like to do this in a new function as this one has gotten quite long and is already doing a lot of things.
+
+-Record the 3rd points location if it has one. boolean 0 or 1 if it has one, and then another column for its location.
+
+-If it has one, record the 3rd touch points location and OHLC data. Sometimes the line would go on for quite some time longer after that second point, so now the goal is to get information about future line points and returns afterwards. Perhaps we can do some comparison between 'resistance_df' and 'df' to determine if the line had more than just those two points, how many points they had, and calculate/get the OHLC and time location of future touch points if the line was still 'active'.
+
+A touch point in this instance has to be some point beyond the 2nd point. It must 'wait' for 5-10 candles before we can start looking for a '3rd touchpoint'.
