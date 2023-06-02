@@ -1,3 +1,6 @@
+*** Dont waste ur time lookin thru code unless you want to, very unorganized atm***
+
+
 Works good on 5 min and 60 min data, should work fine on any other timeframe as well. 
 Change the ATR wiggle room or weighted mean of how candle sticks are measured to change the strictness of the definition of a horizontal resistance line.
 

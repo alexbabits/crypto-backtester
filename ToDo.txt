@@ -3,15 +3,13 @@ Goal:
 - Define an entry. Define a SL. Define TP levels. Do for all top 25 cryptos. Get ~5000 rows of data with statistics: returns, distance from MA's, atr, volume, number of taps on line, etc. Try to see if we can fit some pattern in positive returns with the data. Backtest to optimize SL/TP/etc.
 
 To-do Current:
-- Fix plot so touch points3,4,5,6 etc. plotted with their own 'y' value instead of just the 'line_price' value. will need to add columns to df for this.
-
 - functions are doing too much. (Return things that need to be returned, and then create smaller functions to deal with them (find max touch points, etc.))
 - Get bulk data, do multiple coins (maybe 5-10k+ rows of data, and get like 10-20 coins), so u can get lots of return lines.
 - Make better comments.
 
 Next:
-- Make horizontal support lines.
-- Make Channels
+- Make horizontal support lines. (tbh dont think is strictly necessary for tinkering purposes, is v similar to horizontal resistance lines.)
+- Make Channels (Harder version of this same task of horizontal lines.)
 
 
 
