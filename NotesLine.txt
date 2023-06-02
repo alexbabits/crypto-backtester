@@ -9,11 +9,4 @@ To-do:
 
 Tweaks:
 
-- Identify all touchpoints, not just up to 3. (Have column for the Total Number of Touch Points for a line). Requires re-working 'find_third_touch' function.
-
-Base trade of #3 touchpoint.
-
-
 - Generally polish code see if functions can be split up to be more readable, comment better, etc.
-
-
