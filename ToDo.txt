@@ -4,7 +4,6 @@ Goal:
 
 To-do Current:
 - Define SL, TP levels during trade.
-- Make it so the graph knows how many third/forth/fifth/etc. touch points there are. Loop for em.
 - Make better comments.
 - See if functions can be split up/simplified.
 
