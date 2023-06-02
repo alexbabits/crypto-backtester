@@ -3,9 +3,15 @@ Goal:
 - Define an entry. Define a SL. Define TP levels. Do for all top 25 cryptos. Get ~5000 rows of data with statistics: returns, distance from MA's, atr, volume, number of taps on line, etc. Try to see if we can fit some pattern in positive returns with the data. Backtest to optimize SL/TP/etc.
 
 To-do Current:
-- Define SL, TP levels during trade.
+- Get bulk data, do multiple coins (maybe 5-10k+ rows of data, and get like 10-20 coins)
 - Make better comments.
-- See if functions can be split up/simplified.
+- functions are doing too much. (Return things that need to be returned, and then create smaller functions to deal with them (find max touch points, etc.))
+- Fix plot so dots of 'second' touch are on second touch instead of 'line_price' (Need to get the actual value of second point, and then touch_point_3, 4, 5, 6, etc.)
 
 Next:
 - Make horizontal support lines.
+- Make Channels
+
+
+
+

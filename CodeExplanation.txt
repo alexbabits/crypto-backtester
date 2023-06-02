@@ -6,6 +6,8 @@ Change the ATR wiggle room or weighted mean of how candle sticks are measured to
 3. Finds the rest of the points.
 4. Calculates returns from an entry at the 3rd touchpoints close.
 5. graphs the candlestick chart with acompanied info and graphs returns plot for entries over time.
-
+6. Calculates and then plots trading results based on simple SL/TP.
 
 Details: 'touch points' for horizontal lines aren't going to be perfect. Weighted the touch based on mixes of ATR and weighted mean between high and close or low and close, depending on what was needed. Minimum distance between distinct 'touches' was set to 10 candles.
+
+Notes: Returns calculation was necessary even if not used directly in calculating trading results, to see if for example, 'returns after 3rd point', could possibly yield good results. So then a trading strategy was applied to that. The function that calculates returns is basically a rough probe to see what's out there and if a trading strategy in that general area should be applied.
