@@ -1,0 +1,10 @@
+Works good on 5 min and 60 min data, should work fine on any other timeframe as well.
+
+1. Loads data.
+2. Finds Horizontal resistnace lines by finding first two points.
+3. Finds the rest of the points.
+4. Calculates returns from an entry at the 3rd touchpoints close.
+5. graphs the candlestick chart with acompanied info and graphs returns plot for entries over time.
+
+
+Details: 'touch points' for horizontal lines aren't going to be perfect. Weighted the touch based on mixes of ATR and weighted mean between high and close or low and close, depending on what was needed. Minimum distance between distinct 'touches' was set to 10 candles.

@@ -3,7 +3,6 @@ Goal:
 - Define an entry. Define a SL. Define TP levels. Do for all top 25 cryptos. Get ~5000 rows of data with statistics: returns, distance from MA's, atr, volume, number of taps on line, etc. Try to see if we can fit some pattern in positive returns with the data. Backtest to optimize SL/TP/etc.
 
 To-do Current:
-- Fix naming conventions
 - Define SL, TP levels during trade.
 - Make it so the graph knows how many third/forth/fifth/etc. touch points there are. Loop for em.
 - Make better comments.
