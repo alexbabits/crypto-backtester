@@ -9,33 +9,11 @@ To-do:
 
 Tweaks:
 
+- Identify all touchpoints, not just up to 3. (Have column for the Total Number of Touch Points for a line). Requires re-working 'find_third_touch' function.
 
-
-
-Line price right now is based on the origin candles close. I'd like to make it a weighted mean between the high and the close, so something like weighted_mean(0.6*close + 0.4*high).
-
-Second touch point to include wicks or something similar to what line price did, such as mean or weighted_mean
-Third touch point to include wicks or something similar to what line price did, such as mean or weighted_mean
-upper limit to include wicks or something similar to what line price did, such as mean or weighted_mean
-Bottom_limit to include wicks or something similar to what line price did, such as mean or weighted_mean, (wicks would be 'low' and not 'high')
-
-
-
-
-
-
-
-
-
-
-
-
-
+Base trade of #3 touchpoint.
 
 
 - Generally polish code see if functions can be split up to be more readable, comment better, etc.
 
 
-- Identify all touchpoints, not just up to 3. Base trade of #3 or #4. (Have column for 'Total Number of Touch Points'). Requires re-working 'find_third_touch' function.
- THIS IS GREAT BECAUSE can just do it all in that first function, a line is created after 2 points, but we look for rest of points.
- Or still break it up into (2 points function initial for horizontal line) (then function that finds the rest of the points).
