@@ -21,3 +21,6 @@ Coding Process:
 10. What constitutes a single 'cluster' or separate bounces on upper/lower bounds? (5 candles apart?) (If bunch of clusters, then after like 10 candles count as a 'new' bounce)
 11. Specifically, if open/close is within 10-20% of boundary, either above or below, counts good as a touch. If more than 10-20% above or below boundary, then it invalidates. If within the channel, and 10-20% close enough to boundary, counts as a touch, but not if further away. (Wicks also count as boundary touches inside, but maybe weigh wicks less when they go outside the boundary, maybe up to 30-50% of channels diameter.)
 12. The window search candle by candle to find the first and second points are the hardest. How tf is that done?
+
+
+(Make Channels. Basically non-zero slope concept of horizontal resistance and support lines, with the added problem that both 'resistance' and 'support' channel bounds need to have similar/same slope in order for the channel to exist. So channels are quite rare.)

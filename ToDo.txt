@@ -1,5 +1,40 @@
-To-do Current:
-1. Get bulk data + multiple coins so can get bulk returns data to analyze for optimal strategy. (maybe 5-10k+ rows of data for each coin for 10-20 coins). Include distance from MA's, number of taps on line, volume, etc. to incorporate with optimization based on returns.
+To-do:
+- Get bulk data to collect 1,000+ trades with associated PNL. Run this on top 25 cryptos or spread between cryptos.
+- Multiple TP's and maybe SL's. X% out at each level. Find optimal amount and number.
+- Trailing stop loss if that makes sense. Find optimal amount and number.
+- Add trading fees (0.05%) per execution.
 
-Next:
-- Make Channels. Basically non-zero slope concept of horizontal resistance and support lines, with the added problem that both 'resistance' and 'support' channel bounds need to have similar/same slope in order for the channel to exist. So channels are quite rare.
+After the trades and returns are calculated:
+- random samples for backtesting (if 30000 trades, randomly pull x amount, different samples, different coins, mix and match, different times, rigorous)
+- should end up with a bellcurve of trade PNL's to look at, hopefully where mean is above zero and std is good as well.
+- Extra stats to try to get better PNL and more +EV trades, narrowing down to best trades only. Try find spearman/pearson correlation between stats and PNL.
+"ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better".
+- Useful stats: volume, distance from MA's, number of taps on line (no peak ahead), etc.
+- Other stats: risk/reward ratio's and win % to breakeven.
+- Plotly with bulk data, plot in chunks.
+
+
+
+
+
+Binance bulk data:
+
+def download_binance(currency_pair):
+    file_name = f'spot/{currency_pair}.csv'
+    if os.path.isfile(file_name):
+        return
+    if os.path.isfile(file_name.replace('usdt','usd')):
+        return
+    df = pd.DataFrame()
+    df.to_csv(file_name)
+
+
+    url = f'https://api.binance.com/api/v3/klines?symbol={currency_pair}&interval=5m'
+    _start_time = pd.to_datetime('2014-01-01')
+    _end_time = pd.to_datetime('2023-04-01')
+
+    n_iteration = int( np.ceil( (_end_time.timestamp() - _start_time.timestamp())/300 / LIMIT) )
+    _start = int( _start_time.timestamp() )
+    _end = int( _end_time.timestamp() )
+
+    return
