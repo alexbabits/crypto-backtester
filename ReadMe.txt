@@ -1,4 +1,4 @@
-*** Dont waste ur time lookin thru code unless you want to, very unorganized atm***
+*** Finished bare bones for now, good for basics. Functions still chonky. Can do general cleanup, but functionality all works.***
 
 
 Works good on 5 min and 60 min data, should work fine on any other timeframe as well. 
