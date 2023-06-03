@@ -1,6 +1,5 @@
 To-do Current:
-1. functions are doing too much. (Return things that need to be returned, and then create smaller functions to deal with them (find max touch points, etc.)). Also think that find horizontal line function is messed up atm, can make it more like 'find_touch_points'. Has some extra useless stuff in it 'waiting_candles' and 'next_candles' may be redundant.
-2. Get bulk data + multiple coins so can get bulk returns data to analyze for optimal strategy. (maybe 5-10k+ rows of data for each coin for 10-20 coins). Include distance from MA's, number of taps on line, volume, etc. to incorporate with optimization based on returns.
+1. Get bulk data + multiple coins so can get bulk returns data to analyze for optimal strategy. (maybe 5-10k+ rows of data for each coin for 10-20 coins). Include distance from MA's, number of taps on line, volume, etc. to incorporate with optimization based on returns.
 
 Next:
 - Make Channels. Basically non-zero slope concept of horizontal resistance and support lines, with the added problem that both 'resistance' and 'support' channel bounds need to have similar/same slope in order for the channel to exist. So channels are quite rare.

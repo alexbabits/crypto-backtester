@@ -1,16 +1,27 @@
-*** Finished bare bones for now, good for basics. Functions still chonky. Can do general cleanup, but functionality all works.***
+                                                    HORIZONTAL RESISTANCE LINES
 
+Notes:
+- Cleaned up, functionality all works. Functions large & necessary. Difficult to breakup while maintaining functionality due to delicate conditions for line creation.
 
-Works good on 5 min and 60 min data, should work fine on any other timeframe as well. 
-Change the ATR wiggle room or weighted mean of how candle sticks are measured to change the strictness of the definition of a horizontal resistance line.
+Flexibility of timeframes & trading entries:
+- Works for all timeframes, need to specify a time interval in minutes with corresponding candle data.
+- Can calculate returns and results based on OHLC from any touchpoint or candle near a touchpoint if needed.
 
-1. Loads data.
+Flexibility of identifying line:
+- Can change the percentage of ATR for line price or candle touch areas.
+- Can change weighted mean for line price and candle touch area based on any mix of OHLC.
+- Can change waiting period which determines minimum wait time between touch points, helps avoid clumps of near candles counting as multiple touches.
+
+Ideas:
+- Horizontal Support lines would work very similarly
+- Could make slope=0 channels with horizontal support+resistance lines using this code
+- If can make slope=0 channels, then could also make slanted channels.
+- Could be used as a base right now to create +EV trading strategy for resistance/support lines if bulk data is loaded instead of sample data.
+
+Overview: 
+1. Loads candle price data. (Kraken 1hr sample atm)
 2. Finds Horizontal resistance lines by finding first two points.
-3. Finds the rest of the points.
-4. Calculates returns from an entry at the 3rd touchpoints close. (Useful when have bulk data - to help optimize strategy ideas)
+3. Finds the rest of the touch points.
+4. Calculates returns from an entry point. (Useful when have bulk data to help optimize strategy ideas)
 5. Calculates trading results based on a sample/basic strategy.
 6. graphs the candlestick chart with all the line and trade info. Graphs returns plot for entries over time.
-
-Details: 'touch points' for horizontal lines aren't going to be perfect. Weighted the touch based on mixes of ATR and weighted mean between high and close or low and close, depending on what was needed. Minimum distance between distinct 'touches' was set to 10 candles.
-
-Notes: Returns calculation was necessary even if not used directly in calculating trading results, to see if for example, 'returns after 3rd point', could possibly yield good results. So then a trading strategy was applied to that. The function that calculates returns is basically a rough probe to see what's out there and if a trading strategy in that general area should be applied.
