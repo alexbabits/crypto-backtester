@@ -1,18 +1,6 @@
-Goal: 
-- Identify horizontal support/resistance lines.
-- Define an entry. Define a SL. Define TP levels. Do for all top 25 cryptos. Get ~5000 rows of data with statistics: returns, distance from MA's, atr, volume, number of taps on line, etc. Try to see if we can fit some pattern in positive returns with the data. Backtest to optimize SL/TP/etc.
-
 To-do Current:
-1. Clean up resistance_df names. Organize resistance_df columns better.
-2. functions are doing too much. (Return things that need to be returned, and then create smaller functions to deal with them (find max touch points, etc.)). Also think that find horizontal line function is messed up atm, can make it more like 'find_touch_points'. Has some extra useless stuff in it 'waiting_candles' and 'next_candles' may be redundant.
-3. Get bulk data + multiple coins so can get bulk returns data to analyze for optimal strategy. (maybe 5-10k+ rows of data, and get like 10-20 coins).
+1. functions are doing too much. (Return things that need to be returned, and then create smaller functions to deal with them (find max touch points, etc.)). Also think that find horizontal line function is messed up atm, can make it more like 'find_touch_points'. Has some extra useless stuff in it 'waiting_candles' and 'next_candles' may be redundant.
+2. Get bulk data + multiple coins so can get bulk returns data to analyze for optimal strategy. (maybe 5-10k+ rows of data for each coin for 10-20 coins). Include distance from MA's, number of taps on line, volume, etc. to incorporate with optimization based on returns.
 
 Next:
 - Make Channels. Basically non-zero slope concept of horizontal resistance and support lines, with the added problem that both 'resistance' and 'support' channel bounds need to have similar/same slope in order for the channel to exist. So channels are quite rare.
-
-
-
-touch_point_3 ---> touch_3	
-touch_point_3_price ---> touch_3_price
-touch_point_4 ---> touch_4		
-touch_point_4_price	---> touch_4_price
