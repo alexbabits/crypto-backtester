@@ -9,3 +9,10 @@ To-do Current:
 
 Next:
 - Make Channels. Basically non-zero slope concept of horizontal resistance and support lines, with the added problem that both 'resistance' and 'support' channel bounds need to have similar/same slope in order for the channel to exist. So channels are quite rare.
+
+
+
+touch_point_3 ---> touch_3	
+touch_point_3_price ---> touch_3_price
+touch_point_4 ---> touch_4		
+touch_point_4_price	---> touch_4_price
