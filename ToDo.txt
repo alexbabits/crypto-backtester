@@ -3,9 +3,8 @@ To-do before Optimization:
 2. Multiple TP's and/or SL's. Find optimal amount and number. Trailing stop loss too if optimal.
 3. Need list of coin pairs to loop through as separate df's for functions/plots (df and resistance_df). (Basically will be a dictionary)
 
-
-
-
+Bugs:
+- Find touch points may need to check the waiting candles make sure there is no upper limit. The sliced df ignores any potential upper limit break with the way the start_idx is? (Basically candles that break the line may be getting ignored between the 2nd-->3rd touch points?)
 
 Stats still to add:
 - volume for each candle (just from original df)
@@ -19,10 +18,10 @@ Stats useful for optimization:
 - binance num trades during candle
 - Distance from MA
 - RSI
-- volume
+- volume (avg volume from initial point to entry, then track the volume afterwards, similar to how returns are tracked.)
 - line length
 
 Techniques:
 - pull random samples for backtesting. Pull like 0.5-5% of total trades randomly 10,000 times to get bell curve of results.
 - Look at returns and use spearman (non-linear) and/or pearson (linear) correlation between features in df and PNL. Use ML to determine best mixture of stats to base trades on.
-- "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better".
+- "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
