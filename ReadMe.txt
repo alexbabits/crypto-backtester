@@ -19,7 +19,7 @@ Ideas:
 - Could be used as a base right now to create +EV trading strategy for resistance/support lines if bulk data is loaded instead of sample data.
 
 Overview: 
-1. Loads candle price data. (Kraken 1hr sample atm)
+1. Bulk data already loaded (30 months worth of BTC/USD and ETH/USD atm). Will get more coins after adjusting code to account for multiple coins at once.
 2. Finds Horizontal resistance lines by finding first two points.
 3. Finds the rest of the touch points.
 4. Calculates returns from an entry point. (Useful when have bulk data to help optimize strategy ideas)
