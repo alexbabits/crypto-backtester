@@ -1,26 +1,28 @@
-To-do:
-- Write list to loop through for multiple df's for functions/plots (df and resistance_df), since now have multiple coins. (Right now we are just using the btc one.)
-- Look at returns and use statistics/correlations to find a good strategy.
-- Multiple TP's and maybe SL's. X% out at each level. Find optimal amount and number. Trailing stop loss if that makes sense. Find optimal amount and number.
-- Add trading fees (0.05%) per execution. (he said 20bps)
-- Some NaN/missing rows in the bulk .csv's. pre-process and remove those?
+To-do before Optimization:
+1. Add stats you want to appropriate dataframes.
+2. Multiple TP's and/or SL's. Find optimal amount and number. Trailing stop loss too if optimal.
+3. Need list of coin pairs to loop through as separate df's for functions/plots (df and resistance_df). (Basically will be a dictionary)
 
 
-After the trades and returns are calculated:
-- Optimization should only begin once you have all 20 coins dataframes ready to analyze. Should be rigious meaning strat works on all coins.
-- pull random samples for backtesting. Pull like 0.5-5% of total trades randomly 10,000 times to get bell curve of results.
+
+
+
+Stats still to add:
+- volume for each candle (just from original df)
+- binance num trades during candle (just from original df)
+- RSI (just from original df)
+- Distance from MA (can calc from original df)
+
 - Make sure no peak ahead (don't know all the number of touchpoints in advance for example, only know up to the live candle)
 
-
-Stats:
-- position size (could be variable based on juiciness of trade or risk amount)
-- risk/reward ratio
-- win %, lose %, and win % needed to breakeven (based on r:r).
-- volume
+Stats useful for optimization:
 - binance num trades during candle
 - Distance from MA
 - RSI
+- volume
+- line length
 
 Techniques:
-- Use spearman (non-linear) and/or pearson correlation between features in df and PNL (ML) to determine best mixture of stats to base trades on.
+- pull random samples for backtesting. Pull like 0.5-5% of total trades randomly 10,000 times to get bell curve of results.
+- Look at returns and use spearman (non-linear) and/or pearson (linear) correlation between features in df and PNL. Use ML to determine best mixture of stats to base trades on.
 - "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better".
