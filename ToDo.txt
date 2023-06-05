@@ -3,14 +3,12 @@ To-do before Optimization:
 2. Multiple TP's and/or SL's. Find optimal amount and number. Trailing stop loss too if optimal.
 3. Need list of coin pairs to loop through as separate df's for functions/plots (df and resistance_df). (Basically will be a dictionary)
 
-Bugs:
-- Find touch points may need to check the waiting candles make sure there is no upper limit. The sliced df ignores any potential upper limit break with the way the start_idx is? (Basically candles that break the line may be getting ignored between the 2nd-->3rd touch points?)
-
 Stats still to add:
 - volume for each candle (just from original df)
 - binance num trades during candle (just from original df)
 - RSI (just from original df)
-- Distance from MA (can calc from original df)
+- Distance from MA's (Use HLC/3) (can calc from original df)
+- VWAP
 
 - Make sure no peak ahead (don't know all the number of touchpoints in advance for example, only know up to the live candle)
 
