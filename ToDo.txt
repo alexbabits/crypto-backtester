@@ -1,6 +1,7 @@
 To-Do:
 0. Continue building things useful to improving trading results. General cleanup & condensing of code/functions where possible.
 1. Modify functions to handle multiple coin pair df's. Download the next top 20 coins too.
+2. Multiple TP/SL and trailing loss, I forgot about that
 
 Techniques/How to optimize:
 1. Use ML to determine best mixture of stats to base trades on. "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
