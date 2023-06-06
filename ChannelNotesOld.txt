@@ -1,3 +1,5 @@
+(OLD NOTES FOR FIGURING OUT CHANNELS, WANTED TO KEEP FOR NOW).
+
 - Bottom bounds, the candles will NEVER be at a 'high', and vice versa. (True unless candle is extremely small).
 - For defining touch areas on a trend channel, could use ML, or clever thresholds.
 - Straight lines, y = mx + b. The least squares equation also helpful. 

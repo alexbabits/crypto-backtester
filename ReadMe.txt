@@ -1,27 +1,30 @@
                                                     HORIZONTAL RESISTANCE LINES
 
 Notes:
-- Cleaned up, functionality all works. Functions large & necessary. Difficult to breakup while maintaining functionality due to delicate conditions for line creation.
+- Think of more ways to improve trading strategy for horizontal lines
+- Last thing to do is adjust functions to take in multiple coin pair df's at once. And download+save other pairs/coins data.
 
-Flexibility of timeframes & trading entries:
-- Works for all timeframes, need to specify a time interval in minutes with corresponding candle data.
-- Can calculate returns and results based on OHLC from any touchpoint or candle near a touchpoint if needed.
+Flexibility in general:
+- Can input any timeframe.
+- Can change entry/exits/trading strategy/fees/etc.
 
-Flexibility of identifying line:
-- Can change the percentage of ATR for line price or candle touch areas.
+Flexibility of identifying horizontal resistance line:
+- Can change the percentage of ATR for line price for candle touch points.
 - Can change weighted mean for line price and candle touch area based on any mix of OHLC.
 - Can change waiting period which determines minimum wait time between touch points, helps avoid clumps of near candles counting as multiple touches.
 
 Ideas:
-- Horizontal Support lines would work very similarly
-- Could make slope=0 channels with horizontal support+resistance lines using this code
-- If can make slope=0 channels, then could also make slanted channels.
-- Could be used as a base right now to create +EV trading strategy for resistance/support lines if bulk data is loaded instead of sample data.
+- Horizontal Support Lines (Very similar to Horiontal Resistance Lines).
+- Horizontal Channels: Horizontal support+resistance lines using this code.
+- Slanted Channels: non-zero slope support+resistance lines would create channels. Probs use horizontal line ideas and least squares combined.
+- ML could/will be used to optimize Entry/SL/TP/trailing SL levels, based on the features (indicators) and target ('returns' or 'net_pl_with_fee').
 
 Overview: 
-1. Bulk data already loaded (30 months worth of BTC/USD and ETH/USD atm). Will get more coins after adjusting code to account for multiple coins at once.
+0. Bulk test data (BTC-USDT and ETH-UDST) already loaded in csv. Do not re-run binance API.
+1. Load in csv and make OHLC+indicators df (btc_usdt_df for example).
 2. Finds Horizontal resistance lines by finding first two points.
 3. Finds the rest of the touch points.
-4. Calculates returns from an entry point. (Useful when have bulk data to help optimize strategy ideas)
-5. Calculates trading results based on a sample/basic strategy.
-6. graphs the candlestick chart with all the line and trade info. Graphs returns plot for entries over time.
+4. Calculates trading results based on a sample/basic strategy.
+5. Calculates analysis from entry point.
+6. Graphs/Charts.
+
