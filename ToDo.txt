@@ -1,21 +1,12 @@
-Data To-Do:
-Need list of coin pairs to loop through as separate df's for functions/plots (df and resistance_df). (Basically will be a dictionary). Rather than just btc and eth so far, download the next top 20 coins too.
-
-Stats useful for optimization (CAREFUL WITH LOOK AHEAD):
-- num trades on specific candle or trend (graph line chart)
-- Distance from MA on specific candle or trend (graph line chart)
-- RSI on specific candle or trend (graph line chart)
-- volume (avg volume from initial point to entry, then track the volume afterwards, similar to how returns are tracked.) 
-- line length
+To-Do:
+1. Modify functions to handle multiple coin pair df's. Download the next top 20 coins too.
 
 Techniques/How to optimize:
-1. Look at trade results, find metrics that help trade results.
-2. Look at returns and use spearman (non-linear) and/or pearson (linear) correlation between features in df and PNL. Use ML to determine best mixture of stats to base trades on. "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
-3. Tweak returns into something actually useful. Can have returns 0 returns 1 returns 3 as returns after entry point by candle as the rows, and then 'trade_1' 'trade_2' etc. as the columns. Can be returns after a point. 
-4. Then we can do distance from MA there too, and RSI, and ATR, and num trades, and line length, avg volume during line, then candle volume after a touch point. Might be a dictionary.
-5. See how variables effect PNL. Need info about the surrounding candles. Can do ML binary classification for W/L trade, or do it by raw net_pl, +-$, Would want to figure out which features correlate to winning trades, and the highest winning trades.
-6. Rather than seeing how to optimize your current strategy, maybe try to find an optimal one instead.
-7. Optimal entry candle (1 candle after tch pt 2, 1 candle after tch pt 3, after X candles after tch pt 3 if it dipped 1% or smth), Optimal TP/SL levels. Optimal trailing SL level. (stick with the 3rd touch point for now for simplicity)
+1. Look at returns and use spearman (non-linear) and/or pearson (linear) correlation between features in df and PNL. Use ML to determine best mixture of stats to base trades on. "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
+3. See how variables effect PNL. Need info about the surrounding candles. Can do ML binary classification for W/L trade, or do it by raw net_pl, +-$, Would want to figure out which features correlate to winning trades, and the highest winning trades.
+4. Rather than seeing how to optimize your current strategy, maybe try to find an optimal one instead.
+5. Right now assumes optimal entry. Find Optimal TP/SL levels. Optimal trailing SL level. 
+6. Figure out an optimal entry location other than just the 3rd touchpoint somewhere for the horizontal resistance line.
 
 
 Verification of trading results after optimization:
@@ -23,70 +14,9 @@ Verification of trading results after optimization:
 - Pull random samples for backtesting. Pull like 0.5-5% of total trades randomly, 10,000 times, to get bell curve of results.
 
 
-Schizo Notes:
-
-SL probs want really small SL
-
-Build the infrastructure for finding a good trading strategy with horizontal line for now. I have bulk data now, and last thing to do will be to adjust functions to take in multiple df's for each pair and return them back.
-Build some infrastructure to examine how features interact with the PNL.
-
-
-Plot rsi, distance from MAs, from initial point to end of trade, or 5x length of line.
-green for positive, red for negative (if returns positive or negative for net_pl or after 5x length of line).
-
-With 5x length of line, if returns tend to 'peak' after only 2x length of line, then if ur in profit, take out rest there. Ect.
-
-will get to see what RSI/MA/etc. correlates more to positive trades, and then use that in strategy (enter only if RSI above 50) or whatever.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-RSI ---> initial ---> entry ---> 5x* Length of line or more (this takes care of maximum length trade for the most part, good enough for analysis to see how long to hold).
-
-Would get "RSI @ entry" and then e+1, e+2, e+3, etc. until the end (5x length of line, or like 300 candles, or whatever.)
-
-So we need a FUNCTION to TRACK EACH INDICATOR (Like RSI) similar to how returns are tracked.
-
-WHAT DOES THE DF/DICT LOOK LIKE?
-
-
-Each 'line' (with minimum 3 touchpoints, because 'valid' lines are ones with a 3rd touchpoint). Each line has it's own dataframe.
-
-For example, you can plot "RSI" indicator for each valid line from 'e' to 'e+300' for example. And you can even compare the returns of say 'e+32' to whatever the RSI is for 'e+32', and things like that.
-
-EACH PLOT SHOULD BE (INDICATOR AND PNL) BASICALLY!!!!!!
-
-
-and so each coin, has this 'analysis' dictionary
-
-the 'analysis' dictionary where the key is the valid line's index, and the value is that dataframe shown.
-
-And so each coin has a dictionary of all it's analysis for each valid line (trades, kind of).
-
-But it's not exactly 'trades', it's simply statistics from initial line point, to entry point, to entry point+300 candles.
-
-And so the purpose of this is to actually figure out what features make good trades.
+Misc Things:
+-ML to determine a single trades expected PNL (input the features) (After you've trained a model on your existing data).
+-SL probs want really small SL
+-Build the infrastructure for finding a good trading strategy with horizontal line for now. I have bulk data now, and last thing to do will be to adjust functions to take in multiple df's for each pair and return them back.
+-Build some infrastructure to examine how features interact with the PNL.
+-If returns tend to 'peak' after only 20 candles or 50 candles, then if ur in profit, take out rest there. Adjust strategy based on that.
