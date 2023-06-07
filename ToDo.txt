@@ -4,8 +4,8 @@ To-Do:
 2. Multiple TP/SL and trailing loss, I forgot about that
 
 Techniques/How to optimize:
-1. Use ML to determine best mixture of stats to base trades on. "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
-2. Need info about the surrounding candles. Can do ML binary classification for W/L trade, or do it by raw net_pl, +-$, Would want to figure out which features correlate to winning trades, and which features correlate to the best/highest winning trades.
+1. Determine best mixture of stats and things to base trades on. "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
+2. Need info about the surrounding candles. Can try ML binary classification for W/L trade, or do it by raw net_pl, +-$, Would want to figure out which features correlate to winning trades, and which features correlate to the best/highest winning trades.
 3. Right now everything assumes an optimal entry. Find Optimal TP/SL levels. Optimal trailing SL level. 
 4. Figure out an optimal entry somewhere on the horizontal resistance line, other than the 3rd touchpoint 
 
@@ -15,3 +15,6 @@ Misc Things:
 - Continue building the infrastructure for finding a good trading strategy with horizontal lines.
 - Build some infrastructure to examine how features interact with the PNL.
 - If returns tend to generally see maximum 'peak' after only 20-50 candles or something, then adjust TP/SL/trailing strategy accordingly. (Ex: if get to 50th candle, just exit position always, unless xyz reason to continue).
+- Good Analysis tools: https://pypi.org/project/QuantStats/ "(benchmark can be a pandas Series or ticker) qs.reports.html(stock, "SPY")"
+- We want low drawdowns and good returns/low volatility/consistent: min(max_drawdown)
+
