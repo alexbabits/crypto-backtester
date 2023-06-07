@@ -18,3 +18,4 @@ Misc Things:
 - Good Analysis tools: https://pypi.org/project/QuantStats/ "(benchmark can be a pandas Series or ticker) qs.reports.html(stock, "SPY")"
 - We want low drawdowns and good returns/low volatility/consistent: min(max_drawdown)
 
+- Trades on lower timeframe (entry on 5 min) but looks at 15m/30m/1hr+ even also, just how professionals do.
