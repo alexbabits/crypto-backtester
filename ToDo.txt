@@ -1,7 +1,7 @@
 To-Do:
 0. Continue building things useful to improving trading results. General cleanup & condensing of code/functions where possible.
 1. Modify functions to handle multiple coin pair df's. Download the next top 20 coins too.
-2. Multiple TP/SL and trailing loss, I forgot about that
+2. Multiple TP/SL and trailing losses.
 
 Techniques/How to optimize:
 1. Determine best mixture of stats and things to base trades on. "ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better"
@@ -10,12 +10,12 @@ Techniques/How to optimize:
 4. Figure out an optimal entry somewhere on the horizontal resistance line, other than the 3rd touchpoint 
 
 Misc Things:
-- ML to determine a single trades expected PNL (input the features) (After you've trained a model on your existing data).
-- SL probs best if small?
+- Modify so you get stats from before the trade too a bit (maybe start of the line)
+- Find Optimal TP's/SL's.
 - Continue building the infrastructure for finding a good trading strategy with horizontal lines.
 - Build some infrastructure to examine how features interact with the PNL.
 - If returns tend to generally see maximum 'peak' after only 20-50 candles or something, then adjust TP/SL/trailing strategy accordingly. (Ex: if get to 50th candle, just exit position always, unless xyz reason to continue).
 - Good Analysis tools: https://pypi.org/project/QuantStats/ "(benchmark can be a pandas Series or ticker) qs.reports.html(stock, "SPY")"
 - We want low drawdowns and good returns/low volatility/consistent: min(max_drawdown)
-
-- Trades on lower timeframe (entry on 5 min) but looks at 15m/30m/1hr+ even also, just how professionals do.
+- Trades on lower timeframe (entry on 5 min) but looks at 15m/30m/1hr/daily also, just how professionals do.
+- Always think outside the box.
