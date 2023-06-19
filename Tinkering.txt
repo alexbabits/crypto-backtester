@@ -1,0 +1,38 @@
+Make it so you can just pip install your trading package and then do 'backtesting(price_and_indicators_df,trades_df)' Where it gives you all the results.
+
+Merge 'find horziontal line' and 'find touch points' into 'find and define horizontal lines'
+rename 'resistance_df' to something more appropriate. (horizontal line points df)?
+Through the process, make copies of the df's and change their names accordingly. Much better than using the same df.
+
+Structure (Multiple .ipynb files?) 
+--> 'returns analysis' so you can deeply analyze best exits and entry. Ex: e0 to e1 is, if majority turn negative, then perhaps that entry isn't the best. (And of course if most returns are negative then it's a bad strategy in general, and if you are exiting too early compared to the peak of the returns, then you can tweak the exits through this.) 
+
+draw down, pnl graph, avg xyz
+
+price_df
+price_and_simple_indicators_df (PSI)
+complex_indicators (CI)
+price_and_all_indicators_df (PAI)
+price_and_all_indicators_and_trades_df (PIT)
+
+
+'simple/objective indicators' like RSI/MACD/ATR/EMA/SMA/etc. 100% based on price & time with simple formula. Calculable in single line of code, everyone agrees that it is indeed the only and correct way to do it.
+
+'complex/subjective indicators' like [(resistance lines, support lines, channels) --> (with 0 or non-0 slopes)], price zones, RSI divs, Fib retracements. Requires sophisticated function to define and find the price and time points where they occur. Requires tweaking until they match close enough with reality of what a trader would see or draw.
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import ta
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import requests
+import json
+import pandas as pd
+import numpy as np
+import time
+import random
+from scipy import stats
+
+
+

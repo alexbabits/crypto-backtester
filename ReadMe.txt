@@ -28,3 +28,7 @@ Overview:
 5. Calculates analysis from entry point.
 6. Graphs/Charts.
 
+Useful tools/gpt plugins:
+https://askyourpdf.com/upload
+
+
