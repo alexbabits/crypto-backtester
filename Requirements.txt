@@ -1,0 +1,8 @@
+Python 3.11.4
+All pips are up to the current date (6/19/2023)
+
+pip install ta
+pip install pandas
+pip install numpy
+pip install matplotlib
+pip install plotly
