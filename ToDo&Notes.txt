@@ -1,0 +1,67 @@
+Useful tools/gpt plugins:
+https://askyourpdf.com/upload
+
+To-Do:
+1. Multiple TP, single SL below entry, and trailing losses which match the previous.
+2. Handle multiple coin pairs. ETH and BTC is perfect for testing right now.
+3. Download the next top 20 coins too (2017 to present).
+4. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
+
+Misc Things:
+- Build more infrastructure to examine how features interact with the PNL.
+- Adjust TP/SL/trailing strategy according to 'returns from entry' data. (Always exit after 50 candles if still in trade or whatever.)
+- Good Analysis tools: https://pypi.org/project/QuantStats/ "(benchmark can be a pandas Series or ticker) qs.reports.html(stock, "SPY")"
+- GOAL: Low drawdowns, Low Volatility, High returns. min(max_drawdown), min(max_volatility), max(returns)
+- Trades on lower timeframe (entry on 5 min) but looks at 15m/30m/1hr/daily also, just how professionals do.
+- Always think outside the box.
+
+Notes:
+- Think of more ways to improve trading strategy for horizontal lines
+- ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better
+- More stats outputs like from backtesting.py and QuantStats.
+- Make it so you can just pip install your trading package and then do 'backtesting(price_and_indicators_df,trades_df)' Where it gives you all the results.
+
+
+Channel thoughts:
+--> Non-zero slope concept of horizontal resistance and support lines. Bottom slope is support line, top slope is resistance line. With the added problem that both lines need to have similar/same slope in order for the channel to exist. So channels are quite rare. Based on least squares for the middle/top/bottom lines.
+--> What constitutes a touch point/area? Can make this hyper complex with weights and all sorts of clever thresholds (weighting wicks, volatility and ATR, clumping amount, time between touches, etc.)
+--> Would you generate the top line/bottom line or the middle line first and just use that slope? Minimum threshold to generate a channel.
+--> Trade entry location
+
+
+Stats to include from backtesting.py and quantstats:
+(Most/all of these are vs benchmark too)
+-Exposure time
+-max drawdown
+-avg drawdown 
+-sharpe ratio
+-sortino ratio
+-equity peak
+-equity final
+-returns (annual)
+-Volatility %
+-Best trade % gain
+-worst trade % gain
+-avg trade % gain
+-PNL cumulative portfolio value/cumulative return vs SP500
+-PNL cumulative portfolio value/cumulative return vs SP500 (Volatility matched)
+-Yearly/Monthly/Daily (Will look like brownian motion/noise mostly). (Yearly vs benchmark)
+-Avg up month %, Avg down month %, win days %, win month %, win year % 
+-Best Day/Month/Year %, Worst Day/Month/Year % 
+-Kelly Critierion % 
+-Daily/Monthly/Yearly EV %
+-Expected Shortfall (cVaR) %
+-Underwater plot (shows drawdowns only 0% is the highest baseline, is line/area chart with drawdowns)
+-Worst 10 Drawdowns (start, end, drawdown %, days)
+
+
+
+Enter the trade with a full position size of $10k.
+Set the main stop loss (SL) level below the entry point.
+Set three take profit (TP) levels above the entry point: TP1, TP2, and TP3.
+If the price hits the main SL before any TP level, exit the entire position and the trade ends.
+If the price hits TP1 before the main SL, exit 50% of the position. Now, we are looking for either TP2 or a trailing SL1 (which is at the entry level).
+If the price hits trailing SL1 before TP2, exit the remaining position and the trade ends.
+If the price hits TP2 before trailing SL1, exit 25% of the original position. Now, we are looking for either TP3 or a trailing SL2 (which is at the TP1 level).
+If the price hits trailing SL2 before TP3, exit the remaining position and the trade ends.
+If the price hits TP3 before trailing SL2, exit the remaining position and the trade ends.
