@@ -65,3 +65,32 @@ If the price hits trailing SL1 before TP2, exit the remaining position and the t
 If the price hits TP2 before trailing SL1, exit 25% of the original position. Now, we are looking for either TP3 or a trailing SL2 (which is at the TP1 level).
 If the price hits trailing SL2 before TP3, exit the remaining position and the trade ends.
 If the price hits TP3 before trailing SL2, exit the remaining position and the trade ends.
+
+'exit_time' is whenever the trade ends, and perhaps we could say what level it ended at: (sl_main, tsl1, tsl2, tp3).
+
+tsl1 hit? Yes/No
+tsl2 hit? Yes/No
+tp1 hit? yes/no
+tp2 hit?
+tp3 hit?
+main sl hit?
+
+Thoughts:
+pos_size: 10000 (I'd like to make this another column in trades_df I think, and initialize it's value to 10000?)
+
+'levels/steps': trailing stop loss = tsl, tp = take profit
+
+sl_main: entry - 1.3*atr (Size: exits 100%, since never even hit tp1. Trade ends.) (Obtain it's timestamp and price level)
+tp1: entry + atr*2 (Size: exits 50%. Trade does not end yet.) (Obtain it's timestamp and price level)
+tp2: entry + atr*3 (Size: exits 25%, cumulative 75%. Trade does not end yet.) (Obtain it's timestamp and price level)
+tp3: entry + atr*4 (Size: exits 25%, cumulative 100%. Trade ends.) (Obtain it's timestamp and price level)
+
+tsl1: entry (Size: exits 50%, cumulative 100%, since tp1 is hit. Trade ends.) (Obtain it's timestamp and price level)
+tsl2: tp1 (Size: exits 25%, cumulative 100%, since tp2 is hit. Trade ends.) (Obtain it's timestamp and price level)
+
+
+atr does change, fix that
+
+include tp1 and tp2 timestamps and levels
+
+fix 'results' to show like 'tp1 hit' 'xyz hit'.
