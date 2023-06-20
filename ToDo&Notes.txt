@@ -2,7 +2,7 @@ Useful tools/gpt plugins:
 https://askyourpdf.com/upload
 
 To-Do:
-1. Multiple TP/SL and trailing losses.
+1. Multiple TP, single SL below entry, and trailing losses which match the previous.
 2. Handle multiple coin pairs. ETH and BTC is perfect for testing right now.
 3. Download the next top 20 coins too (2017 to present).
 4. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
@@ -53,3 +53,15 @@ Stats to include from backtesting.py and quantstats:
 -Expected Shortfall (cVaR) %
 -Underwater plot (shows drawdowns only 0% is the highest baseline, is line/area chart with drawdowns)
 -Worst 10 Drawdowns (start, end, drawdown %, days)
+
+
+
+Enter the trade with a full position size of $10k.
+Set the main stop loss (SL) level below the entry point.
+Set three take profit (TP) levels above the entry point: TP1, TP2, and TP3.
+If the price hits the main SL before any TP level, exit the entire position and the trade ends.
+If the price hits TP1 before the main SL, exit 50% of the position. Now, we are looking for either TP2 or a trailing SL1 (which is at the entry level).
+If the price hits trailing SL1 before TP2, exit the remaining position and the trade ends.
+If the price hits TP2 before trailing SL1, exit 25% of the original position. Now, we are looking for either TP3 or a trailing SL2 (which is at the TP1 level).
+If the price hits trailing SL2 before TP3, exit the remaining position and the trade ends.
+If the price hits TP3 before trailing SL2, exit the remaining position and the trade ends.
