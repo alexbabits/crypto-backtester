@@ -1,6 +1,0 @@
-                                                                Defining a Channel
-
---> Non-zero slope concept of horizontal resistance and support lines. Bottom slope is support line, top slope is resistance line. With the added problem that both lines need to have similar/same slope in order for the channel to exist. So channels are quite rare. Based on least squares for the middle/top/bottom lines.
---> What constitutes a touch point/area? Can make this hyper complex with weights and all sorts of clever thresholds (weighting wicks, volatility and ATR, clumping amount, time between touches, etc.)
---> Would you generate the top line/bottom line or the middle line first and just use that slope? Minimum threshold to generate a channel.
---> Trade entry location

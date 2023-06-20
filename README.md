@@ -15,13 +15,13 @@
 * 'complex/subjective indicators' like [(resistance lines, support lines, channels) --> (with 0 or non-0 slopes)], price zones, RSI divs, Fib retracements. Requires sophisticated function to define and find the price and time points where they occur. Requires tweaking until they match close enough with reality of what a trader would see or draw.
 
 ## **Pictures** ##
-<img src="Pictures/candlestickplot.png">
+<img src="pictures/candlestickplot.png">
 </br>
 </br>
-<img src="Pictures/returns.png">
+<img src="pictures/returns.png">
 </br>
 </br>
-<img src="Pictures/tradesampling.png">
+<img src="pictures/tradesampling.png">
 </br>
 </br>
-<img src="Pictures/cumportvalue.png">
+<img src="pictures/cumportvalue.png">
