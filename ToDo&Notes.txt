@@ -57,3 +57,4 @@ Stats to include from backtesting.py and quantstats:
 
 Can probs remove 3rd touchpoint bool, dont think i use it anymore.
 
+'within the same candle' problem with multiple levels hit (tps or tp and a sl, etc.)
