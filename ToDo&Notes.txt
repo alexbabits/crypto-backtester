@@ -2,7 +2,7 @@ Useful tools/gpt plugins:
 https://askyourpdf.com/upload
 
 To-Do:
-1. Multiple TP, single SL below entry, and trailing losses which match the previous.
+1. Get graph perfect (right now plots only the last exit, perfectly. Would prefer to see each tp/sl target that is hit, instead of just the last.)
 2. Handle multiple coin pairs. ETH and BTC is perfect for testing right now.
 3. Download the next top 20 coins too (2017 to present).
 4. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
