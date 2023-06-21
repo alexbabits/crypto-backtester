@@ -55,23 +55,5 @@ Stats to include from backtesting.py and quantstats:
 -Worst 10 Drawdowns (start, end, drawdown %, days)
 
 
+Can probs remove 3rd touchpoint bool, dont think i use it anymore.
 
-    for idx, row in resistance_lines_df.iterrows():
-        if row['num_touch_points'] < 3:
-            continue
-        
-        third_point = row['touch_point_3']
-        third_point_index = df[df['time'] == third_point].index[0]
-        
-        rsi = df.iloc[third_point_index]['rsi']
-        dist_to_vwap = df.iloc[third_point_index]['dist_to_vwap']
-        if rsi < 50 or dist_to_vwap <= 0:
-            continue
-
-
-Should be in different function: Qualify? And then you just have
-
---> 'Qualified':
-    third_point = row['touch_point_3']
-    third_point_index = df[df['time'] == third_point].index[0]
-    (rest of function)
