@@ -1,46 +1,30 @@
 To-Do:
-0. 'within the same candle' problem with multiple levels hit (tps or tp and a sl, etc.)
-1. Make nice global variables for inputs (candle interval, pos_size, things like that).
-2. More stats outputs like from backtesting.py and QuantStats.
-3. Make it so you can just pip install your trading package and then do 'backtesting(price_and_indicators_df,trades_df)' Where it gives you all the results.
-4. Clean up readme
-5. Handle multiple coin pairs. ETH and BTC is perfect for testing right now.
-6. Download the next top 20 coins too (2017 to present).
-7. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
-8. Build more infrastructure to examine how features interact with the PNL.
+1. More stats outputs like from backtesting.py and QuantStats.
+2. Handle multiple coin pairs. ETH and BTC is perfect for testing right now.
+3. Clean up readme & Comments on what functions do.
+4. Download the next top 20 coins too (2017 to present).
+5. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
+6. Eventually make streamlined process for any strategy. (Data --> Any Trade Strategy --> Results and Analysis). (would be pretty complex to package it nicely.)
 
 Tips:
 
-- Use 'returns from entry' to get an idea for optimal Entry/TP/SL.
+- Use 'returns from entry' to get ideas for good Entries/TP levels/SL levels/hold time.
 - GOAL: Low drawdowns, Low Volatility, High returns. min(max_drawdown), min(max_volatility), max(returns)
 - Trades on lower timeframe (entry on 5 min) but looks at 15m/30m/1hr/daily also, just how professionals do.
 - ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better
 
-Stats to include from backtesting.py and quantstats (https://pypi.org/project/QuantStats/):
-(Most/all of these are vs benchmark too)
--Exposure time
--max drawdown
--avg drawdown 
--sharpe ratio
--sortino ratio
--equity peak
--equity final
--returns (annual)
--Volatility %
--Best trade % gain
--worst trade % gain
--avg trade % gain
--PNL cumulative portfolio value/cumulative return vs SP500
--PNL cumulative portfolio value/cumulative return vs SP500 (Volatility matched)
--Yearly/Monthly/Daily (Will look like brownian motion/noise mostly). (Yearly vs benchmark)
+Stats to include from backtesting.py and quantstats (https://pypi.org/project/QuantStats/) (Most/all of these are vs benchmark too):
+-Longest drawdown time
+-Worst 3 Drawdowns (start, end, drawdown %, days)
+-Best trade % gain, worst trade % gain, avg trade % gain
+-6 month rolling sharpe, sortino, volatility, and their average (horizontal line on the graph)
+-SP500 hodl PNL (graph vs our cumulative pnl) (And another plot for (Volatility matched))
+-Yearly/Monthly/Daily % returns (Will look like brownian motion/noise mostly). (Yearly vs benchmark) (graph daily, seems to be bar chart?)
 -Avg up month %, Avg down month %, win days %, win month %, win year % 
 -Best Day/Month/Year %, Worst Day/Month/Year % 
 -Kelly Critierion % 
--Daily/Monthly/Yearly EV %
+-Daily/Monthly/Yearly EV/expected return %. (Perhaps from that random sampling, will be a probability.)
 -Expected Shortfall (cVaR) %
--Underwater plot (shows drawdowns only 0% is the highest baseline, is line/area chart with drawdowns)
--Worst 10 Drawdowns (start, end, drawdown %, days)
-
 
 
 Channel thoughts:
