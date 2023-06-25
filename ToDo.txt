@@ -1,6 +1,6 @@
 To-Do:
 0. Handle multiple coin pairs. ETH and BTC is perfect for testing right now.
-1. Clean up readme & Comments on what functions do. General cleanup of code. (Perhaps Strategy.ipynb, and an Analysis.ipynb)
+1. Clean up readme & Comments on what functions do. General cleanup of code.
 2. Download the next top 20 coins too (2017 to present).
 3. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
 4. Eventually make streamlined process for any strategy. (Data --> Any Trade Strategy --> Results and Analysis). (would be pretty complex to package it nicely.)

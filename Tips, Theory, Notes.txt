@@ -1,24 +1,10 @@
 Tips:
-- Use 'returns from entry' to get ideas for good Entries/TP levels/SL levels/hold time.
 - GOAL: Low drawdowns, Low Volatility, High returns. min(max_drawdown), min(max_volatility), max(returns)
 - Trades on lower timeframe (entry on 5 min) but looks at 15m/30m/1hr/daily also, just how professionals do.
-- ex: if volume on last candle > avg(volume) of the line, the PNL is slightly better
-
-Min length trade of 0 is working as intended --> exits that happened within the entry candle, since entries are on the candles open.
-For returns plot, e+0 is working as intended, since entries are at the candle opens, this represents the returns within that first entry candle.
-
-
-Channel thoughts:
---> Non-zero slope concept of horizontal resistance and support lines. Bottom slope is support line, top slope is resistance line. With the added problem that both lines need to have similar/same slope in order for the channel to exist. So channels are quite rare. Based on least squares for the middle/top/bottom lines.
---> What constitutes a touch point/area? Can make this hyper complex with weights and all sorts of clever thresholds (weighting wicks, volatility and ATR, clumping amount, time between touches, etc.)
---> Would you generate the top line/bottom line or the middle line first and just use that slope? Minimum threshold to generate a channel.
---> Trade entry location
-
-Misc/SORT THIS:
-Horizontal Support Lines (Very similar to Horiontal Resistance Lines).
-Horizontal Channels: Horizontal support+resistance lines using this code.
-Slanted Channels: non-zero slope support+resistance lines would create channels. Probs use horizontal line ideas and least squares combined.
-ML could/will be used to optimize Entry/SL/TP/trailing SL levels, based on the features (indicators) and target ('returns' or 'net_pl_with_fee').
+- Optimizing stuff: "If volume on last candle > avg(volume) of the line, the PNL is slightly better."
+- Returns from Entry is useful to look at to see how the trades go from entry until X number of candles afterwards. good ideas for Entries/TP levels/SL levels/hold time. Other plots and distributions and stats helpful in general to see how trades went.
+- Min length trade of 0 in trades_df is working as intended --> exits that happened within the entry candle, since entries are on the candles open.
+- For returns plot, e+0 is working as intended, since entries are at the candle opens, this represents the returns within that first entry candle.
 
 Simple vs Complex Indicators:
 
@@ -26,41 +12,7 @@ Simple vs Complex Indicators:
 
 --> 'complex/subjective indicators': resistance lines, support lines, channels (with 0 or non-0 slopes), price zones, RSI divs, Fib retracements. Requires sophisticated function to define and find the price and time points where they occur. Requires tweaking until they match close enough with reality of what a trader would see or draw.
 
-
-
-########### returns_from_entry ###########
-#--> 'e' stands for entry.
-#--> Returns are calculated as (current hlc/3) - entry_price
-#--> Good for determining a trading strategy or backtesting/optimizing for SL/TP/etc. (Use bulk data eventually)
-#--> 'e+0' will reflect the price change that happened within the 'entry_time' candle itself, (since trades executed on open of candle)
-
-########### returns_from_entry ###########
-
-
-
-########### trading_strategy ###########
-
-#--> Uses the opening price of the candle after the horizontal lines third touch point as an entry.
-#--> Defines the stop loss level as 1.3*atr below the entry, and the take profit level as 3*atr above the entry.
-#--> Iterates through the sliced data looking for sl/tp/neither.
-#--> Adds columns to trades_df
-
-########### trading_strategy ###########
-
-
-########### find_horizontal_resistance_lines_and_touch_points ###########
-
-#--> Identifies an "origin" green candle for resistance line starting point. 
-#--> Defines the resistance 'line_price' as a weighted mean of the origin candle's high and close prices. 
-# (This is superior to HLC/3 because we are only interested in the high wicks for resistance lines). 
-#--> The 'waiting_period' and the 'waiting_candles' is a way to separate 'clumped' candle touches to have min # candles between origin point and 2nd touch. 
-#--> Checks the following candles for touch points, using % of atr as wiggle room to define an acceptable range for touch points.
-#--> Makes sure there are no overlapping lines during line creation.
-
-########### find_horizontal_resistance_lines_and_touch_points ###########
-
-
-
+#### How TP's, SL's, and Trailing SL's WORK ####
 ‘sl_main_hit’ = (exit – entry) * (pos size/entry) = (22945.88 – 23064.57) *(10000/23064.57) = -51.45
 
 tp1_hit_then_tsl1 = You got out 50% at tp1, and 50% out at tsl1.
@@ -81,8 +33,26 @@ tp3_hit = You got out 50% at tp1, 25% out at tp2, 25% out at tp3.
 Sum = 32.5+24.4+32.54 = 89.44
 
 
+Noteable Functions:
+
+########### find_horizontal_resistance_lines_and_touch_points ###########
+--> It finds horizontal lines. Based on ATR for touchpoints and describes where a candle is in space. Ignores clumped candles via waiting period.
 
 
+########### trading_strategy ###########
+--> Trading Strategy focused around breakout of horizontal resistance lines. Includes trailing stop losses and multiple take profits.
 
---> Returns from Entry is useful to look at as a post-mortem to see how the trades go from entry until X number of candles afterwards.
---> Distribution is ueseful cuz it takes random samples and shiz.
+
+########### returns_from_entry ###########
+--> It's a function that creates a dictionary of every trade from it's entry to X number of candles in the future to look at the returns.
+
+
+Future Thoughts & Channels:
+
+--> Non-zero slope concept of horizontal resistance and support lines. Bottom slope is support line, top slope is resistance line. With the added problem that both lines need to have similar/same slope in order for the channel to exist. So channels are quite rare. Based on least squares for the middle/top/bottom lines.
+--> What constitutes a touch point/area? Can make this hyper complex with weights and all sorts of clever thresholds (weighting wicks, volatility and ATR, clumping amount, time between touches, etc.)
+--> Would you generate the top line/bottom line or the middle line first and just use that slope? Minimum threshold to generate a channel.
+--> Horizontal Support Lines (Very similar to Horiontal Resistance Lines).
+--> Horizontal Channels: Horizontal support+resistance lines using this code.
+--> Slanted Channels: non-zero slope support+resistance lines would create channels. Probs use horizontal line ideas and least squares combined.
+--> ML could/will be used to optimize Entry/SL/TP/trailing SL levels, based on the features (indicators) and target ('returns' or 'net_pl_with_fee').
