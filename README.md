@@ -1,27 +1,50 @@
 ## **Overview** ##
-0. Use DownloadData.ipynb to download bulk OHLC data from binance if needed.
-1. Load in csv and make OHLC+indicators df (btc_usdt_df for example).
-2. Finds Horizontal resistance lines 
-3. Defines a trading strategy
-4. Calculates trading results
-5. Analyzes trading results
 
-## **Ideas** ##
-* Horizontal Support Lines (Very similar to Horiontal Resistance Lines).
-* Horizontal Channels: Horizontal support+resistance lines using this code.
-* Slanted Channels: non-zero slope support+resistance lines would create channels. Probs use horizontal line ideas and least squares combined.
-* ML could/will be used to optimize Entry/SL/TP/trailing SL levels, based on the features (indicators) and target ('returns' or 'net_pl_with_fee').
-* 'simple/objective indicators' like RSI/MACD/ATR/EMA/SMA/etc. 100% based on price & time with simple formula. Calculable in single line of code, everyone agrees that it is indeed the only and correct way to do it.
-* 'complex/subjective indicators' like [(resistance lines, support lines, channels) --> (with 0 or non-0 slopes)], price zones, RSI divs, Fib retracements. Requires sophisticated function to define and find the price and time points where they occur. Requires tweaking until they match close enough with reality of what a trader would see or draw.
+0. DownloadData.ipynb to download bulk OHLC data from binance if needed.
+1. Global Variables, OHLC Data, Calculate 'Simple/Objective' Indicators
+2. Define & Calculate 'Complex/Subjective' Indicators (Ex: Horizontal Lines)
+3. Define Trading Strategy
+4. Analyzes Trading Results
+    1. Candlestick Chart with Trades
+    2. Trade Stats Calculations
+    3. Cumulative Portfolio Value Graph, Underwater Plot, Rolling Risk Metrics
+    4. Distribution of Daily Returns, Distribution of Randomly Sampled Trades
+    5. Returns from Entry
+
+</br>
 
 ## **Pictures** ##
-<img src="Pictures/candlestickplot.png">
+
 </br>
 </br>
-<img src="Pictures/returns.png">
+You can zoom in on the graph in the code to check and make sure entries are correct. Plotly graphs don't show up in the code viewer in github.
 </br>
 </br>
-<img src="Pictures/tradesampling.png">
+<img src="pictures/candlestickplot.png">
 </br>
 </br>
-<img src="Pictures/cumportvalue.png">
+<img src="pictures/candlescloseup.png">
+</br>
+</br>
+<img src="pictures/cumportvalue.png">
+</br>
+</br>
+<img src="pictures/underwaterplot.png">
+</br>
+</br>
+<img src="pictures/rollingsharpe.png">
+</br>
+</br>
+<img src="pictures/rollingsortino.png">
+</br>
+</br>
+<img src="pictures/rollingvolatility.png">
+</br>
+</br>
+<img src="pictures/dailyreturns.png">
+</br>
+</br>
+<img src="pictures/tradesampling.png">
+</br>
+</br>
+<img src="pictures/returns.png">
