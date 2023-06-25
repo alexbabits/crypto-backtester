@@ -1,6 +1,4 @@
 Trading Strategy is just an example of breakout of horizontal resistance line after 3rd touch point. Performs very poorly.
-</br>
-</br>
 
 ## **Overview** ##
 
@@ -15,12 +13,8 @@ Trading Strategy is just an example of breakout of horizontal resistance line af
     4. Distribution of Daily Returns, Distribution of Randomly Sampled Trades
     5. Returns from Entry (Useful post-mortem)
 
-</br>
 
 ## **Pictures** ##
-
-</br>
-</br>
 You can zoom in on the graph in the code to check and make sure entries are correct. Plotly graphs don't show up in the code viewer in github.
 </br>
 </br>
