@@ -20,31 +20,31 @@
 You can zoom in on the graph in the code to check and make sure entries are correct. Plotly graphs don't show up in the code viewer in github.
 </br>
 </br>
-<img src="pictures/candlestickplot.png">
+<img src="Pictures/candlestickplot.png">
 </br>
 </br>
-<img src="pictures/candlescloseup.png">
+<img src="Pictures/candlescloseup.png">
 </br>
 </br>
-<img src="pictures/cumportvalue.png">
+<img src="Pictures/cumportvalue.png">
 </br>
 </br>
-<img src="pictures/underwaterplot.png">
+<img src="Pictures/underwaterplot.png">
 </br>
 </br>
-<img src="pictures/rollingsharpe.png">
+<img src="Pictures/rollingsharp.png">
 </br>
 </br>
-<img src="pictures/rollingsortino.png">
+<img src="Pictures/rollingsortino.png">
 </br>
 </br>
-<img src="pictures/rollingvolatility.png">
+<img src="Pictures/rollingvolatility.png">
 </br>
 </br>
-<img src="pictures/dailyreturns.png">
+<img src="Pictures/dailyreturns.png">
 </br>
 </br>
-<img src="pictures/tradesampling.png">
+<img src="Pictures/tradesampling.png">
 </br>
 </br>
-<img src="pictures/returns.png">
+<img src="Pictures/returns.png">
