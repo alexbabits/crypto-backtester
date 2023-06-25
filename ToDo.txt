@@ -4,7 +4,7 @@ To-Do:
 2. Download the next top 20 coins too (2017 to present).
 3. Actually make a good strategy. (Find Optimal TP/SL levels. Optimal trailing SL level. Optimal Entry.)
 4. Eventually make streamlined process for any strategy. (Data --> Any Trade Strategy --> Results and Analysis). (would be pretty complex to package it nicely.)
-5. Determine if 'multiple tp/sl hit within same candle' is even an issue. Can already enter and exit within same candle, and I think sl's are prioritized over tp's, so if a trailing stop loss and tp hit in same candle, maybe both are hit, or just says the trailing stop loss is.
+5. Determine if 'multiple tp/sl hit within same candle' is even an issue. Can already enter and exit within same candle, and I think sl's are prioritized over tp's, so if a trailing stop loss and tp hit in same candle, either both are hit, or just the trailing stop loss is. So it's overly cautious already.
 
 Misc:
 Make trade_stats_df all rows instead of columns.
